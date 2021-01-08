@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../static/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+<input type="text" @keydown="validate($event)">
+</div>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+
+        },
+        methods:{
+            validate:function (e) {
+                //将键盘录入按键信息打印在f12 控制台上
+                console.log(e);
+                //获取键盘按入的值
+               var keyCode= e.keyCode;
+                if(!(keyCode>=48&&keyCode<=57)||e.shiftKey==true){//给定范围,sheft键
+                    //阻止默认行为
+                    e.preventDefault();
+                }
+            }
+        }
+
+    });
+</script>
+</body>
+</html>

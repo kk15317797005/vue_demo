@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../static/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--<p v-for="obj,index in objArrays">
+        {{obj.name}}&ndash;&gt;{{index}}
+    </p>-->
+    <p v-for="val,key in user">
+        {{key}}
+        {{val}}
+    </p>
+    {{a}}
+</div>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            a:"3eee",
+            arrays:[2,3,5,6,78,96],
+            objArrays:[
+                {id:1,name:"提莫啊"},
+                {id:2,name:"ez"},
+                {id:3,name:"mm"},
+            ],
+            user:{id:1,name:"提莫啊"}
+        },
+        methods:{}
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../static/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <h4>{{msg}}</h4><br>
+    <input type="button" value="浪起来" @click="lang()">
+    <input type="button" value="低调" @click="stop()">
+</div>
+<script>
+    new Vue({
+       el:"#app",
+       data:{
+           msg:"来人，把朕的骨灰撒了给各位助助兴",
+           intervalId:null //定义定时器id
+       } ,
+       methods:{
+           lang:function () {
+               if(this.intervalId!=null){
+                   return;
+               };
+               /*
+               定时函数，第一个参数为要执行的函数，第二个参数为间隔时间
+               function内部默认不支持this关键字，
+               如要支持，使用箭头函数
+                */
+               this.intervalId=setInterval(()=>{
+                   //截取msg的第一个字符
+                   var start=this.msg.substring(0,1);
+                   //截取第一个后面的所以字符
+                   var end=this.msg.substring(1);
+                   //重新拼接赋给msg，位置互换
+                   this.msg=end+start;
+               },1000);
+           },
+            stop:function () {
+                //停止定时任务,让定时任务获取不到下次执行时间，并没有置为空
+               clearInterval(this.intervalId);
+               //将定时时间的id置为空
+               this.intervalId=null;
+
+            }
+
+       }
+    });
+</script>
+</body>
+</html>

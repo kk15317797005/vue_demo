@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../static/vue.min.js"></script>
+</head>
+<body>
+<!--v-model 是vue中唯一一个双向绑定指令，只支持在表单中使用-->
+<form id="app">
+    <p>
+        {{username}}<br>
+        <hr>
+        <input type="text" v-model="username">
+    </p>
+
+</form>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            username:"cc"
+        }
+    })
+</script>
+</body>
+</html>

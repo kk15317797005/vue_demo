@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        .talk_con {
+            width: 600px;
+            height: 500px;
+            border: 1px solid #666;
+            margin: 50px auto 0;
+            background: #f9f9f9;
+        }
+
+        .talk_show {
+            width: 580px;
+            height: 420px;
+            border: 1px solid #666;
+            background: #fff;
+            margin: 10px auto 0;
+            overflow: auto;
+        }
+
+        .talk_input {
+            width: 580px;
+            margin: 10px auto 0;
+        }
+
+        .whotalk {
+            width: 80px;
+            height: 30px;
+            float: left;
+            outline: none;
+        }
+
+        .talk_word {
+            width: 420px;
+            height: 26px;
+            padding: 0px;
+            float: left;
+            margin-left: 10px;
+            outline: none;
+            text-indent: 10px;
+        }
+
+        .talk_sub {
+            width: 56px;
+            height: 30px;
+            float: left;
+            margin-left: 10px;
+        }
+
+        .atalk {
+            margin: 10px;
+        }
+
+        .atalk span {
+            display: inline-block;
+            background: #0181cc;
+            border-radius: 10px;
+            color: #fff;
+            padding: 5px 10px;
+        }
+
+        .btalk {
+            margin: 10px;
+            text-align: right;
+        }
+
+        .btalk span {
+            display: inline-block;
+            background: #ef8201;
+            border-radius: 10px;
+            color: #fff;
+            padding: 5px 10px;
+        }
+    </style>
+    <script type="text/javascript" src="../static/vue.min.js">
+        // 写出对应功能代码
+
+    </script>
+</head>
+<body>
+<div class="talk_con">
+    <div class="talk_show" id="words">
+        <div :class="[item.who=='A'?'atalk':'btalk']" v-for="item in content">
+            <span>{{item.who}}说：
+            {{item.msg}}</span>
+        </div>
+
+    </div>
+    <div class="talk_input">
+        <select class="whotalk" v-model="shui" id="who">
+            <option value="0">A说：</option>
+            <option value="1">B说：</option>
+        </select>
+        <input type="text" v-model="chatMsg" class="talk_word" id="talkwords">
+        <input type="button" value="发送" class="talk_sub" id="talksub" @click="printMsg()">
+    </div>
+</div>
+</body>
+<script>
+    new Vue({
+        el: ".talk_con",
+        data: {
+            shui: "0",
+            chatMsg: "",
+            content: [{who: "A", msg: "你吃了没"},
+                {who: "B", msg: "你呢"}]
+        },
+        methods: {
+            printMsg: function () {
+
+                var sh = (this.shui == 0) ? "A" : "B";
+
+                this.content.push({who: sh, msg: this.chatMsg})
+                setTimeout(function () {
+                    //右边显示条
+                    document.getElementById("words").scrollTop = 999999999999;
+                });
+
+            }
+        }
+    });
+</script>
+</html>

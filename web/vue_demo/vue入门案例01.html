@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue入门</title>
+    <!--
+    使用vue三步
+    1.引入vue.js
+    2.创建一个vue对象，并指定el属性，data属性，method属性
+    3.在页面指定一个vue控制的区域
+    -->
+    <script type="text/javascript" src="../static/vue.min.js"></script>
+</head>
+<body>
+<div id="divArea">
+   <p>{{msg}}</p><br>
+    <p>{{msg1}}</p><br>
+    <p>{{msg1>100?"大于100":"小于100"}}</p>
+    <input type="text" value="msg1" v-model="msg1">
+</div>
+<script>
+    new Vue({
+        el:"#divArea" ,//表示vue控制的区域
+        data:{
+            msg:"model的内容可以展现在视图页面中！",
+            msg1:998
+        }
+
+    });
+</script>
+</body>
+</html>

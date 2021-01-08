@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../static/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" @keydown.enter="sumbit()">
+</div>
+<script>
+    new Vue({
+        el:"#app",
+        methods:{
+           sumbit:function () {
+                alert("模拟提交哈");
+           }
+        }
+    });
+</script>
+
+</body>
+</html>
